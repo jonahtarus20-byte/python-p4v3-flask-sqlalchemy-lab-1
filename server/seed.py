@@ -5,9 +5,9 @@ from app import app
 from models import db, Earthquake
 
 with app.app_context():
-
-    # Delete all rows in the "earthquakes" table
+    # Delete all existing records first
     Earthquake.query.delete()
+    db.session.commit()
 
     # Add several Earthquake instances to the "earthquakes" table
     db.session.add(Earthquake(magnitude=9.5, location="Chile", year=1960))
